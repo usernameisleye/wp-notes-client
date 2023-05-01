@@ -1,0 +1,114 @@
+.Blogs{
+    width: 100vw;
+    min-width: 100vw;
+
+    main{
+        padding: $size-300;
+        h2{
+            @include header;
+            margin-block: $size-500;
+        }
+        h3{
+            @include sub-header;
+        }
+        h4{
+            @include base-header;
+        }
+        .content{
+            padding: $size-400 $size-200;
+            border-radius: $size-100;
+            width: fit-content;
+        }
+
+        .other{
+            h3{
+                border-top: 1px solid;
+                border-bottom: 1px solid;
+                padding-block: $size-100;
+            }
+        }
+    
+        .all-posts{
+            width: 100%;
+            outline: none;
+            background: none;
+            padding: $size-100;
+            margin-block: $size-400;
+            border-radius: $size-100;
+        }
+    }
+}
+
+// Light
+.light{
+    .Blogs{
+        main{
+            h2,
+            h4,
+            .all-posts{
+                color: $clr-light-primary;
+            }
+            h3{
+                color: $clr-light-accent;
+            }
+            p{
+                color: $clr-light-grey-02;
+            }
+            .content{
+                &:hover{
+                    background: $clr-light-grey-04;
+                }
+            }
+
+            .other{
+                h3{
+                    border-color: $clr-light-grey-03;
+                }
+            }
+    
+            .all-posts{
+                border: 1px solid $clr-light-grey-03;
+                &:is(:hover, :focus-within){
+                    background: $clr-light-grey-03;
+                }
+            }
+        }
+    }
+}
+
+// Dark
+.dark{
+    .Blogs{
+        main{
+            h2,
+            h4,
+            .all-posts{
+                color: $clr-dark-primary;
+            }
+            h3{
+                color: $clr-dark-accent;
+            }
+            p{
+                color: $clr-dark-grey-02;
+            }
+            .content{
+                &:hover{
+                    background: $clr-dark-grey-04;
+                }
+            }
+
+            .other{
+                h3{
+                    border-color: $clr-dark-grey-03;
+                }
+            }
+    
+            .all-posts{
+                border: 1px solid $clr-dark-grey-03;
+                &:is(:hover, :focus-within){
+                    background: $clr-dark-grey-03;
+                }
+            }
+        }
+    }
+}

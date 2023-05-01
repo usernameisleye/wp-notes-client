@@ -1,0 +1,47 @@
+@mixin min-max-width($type, $value){
+    @media (#{$type}-width: #{$value}) {
+        @content;
+    }
+}
+
+@mixin icon{
+    background: none;
+    outline: none;
+    border: none;
+}
+
+@mixin header{
+    font-size: $fs-600;
+    line-height: $lh-600;
+}
+
+@mixin sub-header{
+    font-size: $fs-400;
+    line-height: $lh-400;
+    text-transform: uppercase;
+    margin-block: $size-200;
+}
+
+@mixin base-header{
+    font-size: $fs-500;
+    line-height: $lh-500;
+    margin-bottom: $size-200;
+}
+
+@mixin flex-col($gap){
+    display: flex;
+    gap: $gap;
+    flex-direction: column;
+}
+
+@mixin flex-ac-sb{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin flex-ac-jc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

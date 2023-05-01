@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+// Light Mode
+$clr-light-accent: rgb(236, 113, 96);
+$clr-light-accent-hover: rgb(218, 87, 69);
+
+$clr-light-primary: rgb(48, 48, 48);
+$clr-light-white: rgb(255, 255, 255);
+
+$clr-light-grey-01: rgb(80, 80, 80);
+$clr-light-grey-02: rgb(137, 137, 137);
+$clr-light-grey-03: rgb(231,231,233);
+$clr-light-grey-04: rgb(246, 246, 246);
+
+$clr-light-error: rgb(216, 39, 0);
+
+// Dark Mode
+$clr-dark-accent: rgb(239, 134, 120);
+$clr-dark-accent-hover: rgb(236, 113, 96);
+
+$clr-dark-primary: rgb(224, 224, 224);
+$clr-dark-white: rgb(00, 00, 00);
+
+$clr-dark-grey-01: rgb(137, 137, 137);
+$clr-dark-grey-02: rgb(85, 85, 85);
+$clr-dark-grey-03: rgb(32,32,32);
+$clr-dark-grey-04: rgb(16, 16, 16);
+
+$clr-dark-error: rgb(224, 82, 51);
+
+// Font family
+$ff-accent: 'Inter', sans-serif;
+
+// Font sizes
+$fs-300: 13px;
+$fs-400: 16px;
+$fs-500: 20px;
+$fs-600: 26px;
+
+// Font weights
+$fw-regular: 400;
+$fw-bold: 700;
+
+// Line heights(respectively)
+$lh-300: 20px;
+$lh-400: 27px;
+$lh-500: 24px;
+$lh-600: 31px;
+
+// Sizes
+$size-100: .5rem;
+$size-200: .75rem;
+$size-300: 1rem;
+$size-400: 1.5rem;
+$size-500: 2rem;
+$size-600: 3rem;
+$size-700: 4rem;
+$size-800: 5rem;
+$size-900: 7rem;

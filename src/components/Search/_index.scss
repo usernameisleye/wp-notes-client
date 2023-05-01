@@ -1,0 +1,42 @@
+.search{
+    position: relative;
+    input{
+        border: none;
+        outline: none;
+        padding-left: $size-500 * 1.2;
+        padding-block: $size-100;
+        border-radius: $size-100;
+    }
+    .icon{
+        position: absolute;
+        top: 50%;
+        left: 2%;
+        transform: translateY(-50%);
+    }
+}
+
+// Light
+.light{
+    .search{
+        input{
+            color: $clr-light-primary;
+            &::placeholder{
+                color: $clr-light-grey-02;
+            }
+        }
+    }
+}
+
+// Dark
+.dark{
+    .search{
+        input{
+            color: $clr-dark-primary;
+            border: .5px solid $clr-dark-grey-02;
+            background: none;
+            &::placeholder{
+                color: $clr-dark-grey-02;
+            }
+        }
+    }
+}
