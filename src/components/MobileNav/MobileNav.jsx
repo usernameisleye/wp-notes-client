@@ -18,7 +18,7 @@ const MobileNav = () => {
                 </div>
 
                 <div className="logo">
-                    <img src="./images/logo.png" alt="WP notes logo" />
+                    <img src="./images/Logo.svg" alt="WP notes logo" />
                 </div>
 
                 <div className="search">

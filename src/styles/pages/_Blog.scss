@@ -1,12 +1,10 @@
 .Blogs{
-    width: 100vw;
-    min-width: 100vw;
+    min-width: 100%;
 
     main{
         padding: $size-300;
         h2{
             @include header;
-            margin-block: $size-500;
         }
         h3{
             @include sub-header;
@@ -15,9 +13,11 @@
             @include base-header;
         }
         .content{
+            @include flex-col($size-100);
             padding: $size-400 $size-200;
             border-radius: $size-100;
             width: fit-content;
+            cursor: pointer;
         }
 
         .other{
@@ -35,6 +35,16 @@
             padding: $size-100;
             margin-block: $size-400;
             border-radius: $size-100;
+        }
+    }
+}
+
+@include min-max-width(min, 50em){
+    .Blogs{
+        min-width: 60%;
+        margin-inline: auto;
+        .content{
+            min-width: 100%;
         }
     }
 }

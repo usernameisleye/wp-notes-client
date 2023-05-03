@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import Search from "../Search/Search";
 
 const Sidebar = () => {
     // State values
-    const [close, setClose] = useState(false)
+    const [close, setClose] = useState(false);
+    const [active, setActive] = useState(0);
 
     const links = [
         {
@@ -15,19 +17,34 @@ const Sidebar = () => {
             to: "/contact"
         },
         {
-            title: "Portfolio",
-            to: "/portfolio"
+            title: "Sign In",
+            to: "/signin"
         }
     ];
 
+    // Handle onclick active
+    const handleActive = (index) => {
+        setActive(index);
+    }
+
+    // Close tab function
     const closeTab = () => {
         setClose(true);
     };
 
     return ( 
         <aside className={`Sidebar ${ close ? "hide" : "" }`}>
-            <div className="logo">
-                <img src="./images/logo.png" alt="WP notes logo" />
+            <div className="top">
+                <div className="logo">
+                    <Link to="/">
+                        <img src="./images/logo.png" alt="WP notes logo" />
+                    </Link>
+
+                </div>
+
+                <div className="user">
+                    <img src="./images/user-img.png" alt="Default user image"/>
+                </div>
             </div>
 
             <div className="close" onClick={closeTab}>
@@ -40,13 +57,15 @@ const Sidebar = () => {
 
             <nav>
                 <ul className="links" role="list">
-                    <li>
-                        <a href="" className="active">Home</a>
-                    </li>
-
                     {links.map((link, index) => (
-                        <li key={index} className="">
-                            <a href="">{link.title}</a>
+                        <li 
+                          key={index} 
+                          onClick={() => handleActive(index)}
+                        >
+                            <Link
+                             to={ link.to }
+                             className={index === active ? "active" : "*"}
+                             >{ link.title }</Link>
                         </li>
                     ))}
                 </ul>

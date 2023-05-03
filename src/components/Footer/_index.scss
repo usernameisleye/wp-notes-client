@@ -1,0 +1,74 @@
+.Footer{
+    @include flex-col($size-400);
+    padding: $size-300;
+    &_top{
+        @include flex-col($size-300)
+    }
+    &_bottom{
+        align-self: flex-start;
+        ul{
+            display: flex;
+            gap: $size-300;
+            li{
+                a{
+                    text-decoration: none;
+                    &:focus-within{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include min-max-width(min, 50em){
+    .Footer{
+        flex-direction: row;
+        justify-content: space-between;
+        &_bottom{
+            align-self: flex-end;
+        }
+    }
+}
+
+// Light
+.light{
+    .Footer{
+        .dull{
+            color: $clr-light-grey-02;
+        }
+        &_bottom{
+            ul{
+                li{
+                    a{
+                        color: $clr-light-accent;
+                        &:hover{
+                            color: $clr-light-grey-02;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Dark
+.dark{
+    .Footer{
+        .dull{
+            color: $clr-dark-grey-02;
+        }
+        &_bottom{
+            ul{
+                li{
+                    a{
+                        color: $clr-dark-accent;
+                        &:hover{
+                            color: $clr-dark-grey-02;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -13,6 +13,7 @@
 @mixin header{
     font-size: $fs-600;
     line-height: $lh-600;
+    margin-block: $size-500;
 }
 
 @mixin sub-header{
@@ -26,6 +27,19 @@
     font-size: $fs-500;
     line-height: $lh-500;
     margin-bottom: $size-200;
+}
+
+@mixin form-input{
+    border-radius: $size-100;
+    padding: $size-200;
+    outline: none;
+    border: none;
+}
+
+@mixin button{
+    @include icon;
+    padding: $size-300 $size-600;
+    border-radius: $size-100;
 }
 
 @mixin flex-col($gap){
@@ -44,4 +58,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@mixin flex-ac($gap){
+    display: flex;
+    gap: $gap;
+    align-items: center;
 }

@@ -15,6 +15,17 @@
   font-size: inherit;
   font-weight: inherit;
   font-family: $ff-accent;
+  &::-webkit-scrollbar{
+    width: $size-300;
+    height: $size-300;
+  }
+  &::-webkit-scrollbar-track{
+    background-color: $clr-light-grey-02;
+  }
+  &::-webkit-scrollbar-thumb{
+    background-color: $clr-dark-grey-02;
+  }
+
 }
 
 // Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed
@@ -84,4 +95,3 @@ h6{
     scroll-behavior: auto !important;
   }
 }
-

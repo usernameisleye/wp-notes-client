@@ -1,0 +1,136 @@
+.SignIn{
+    width: 100%;
+    .main{
+        @include flex-col($size-600);
+        padding: $size-300;
+        a{
+            text-decoration: none;
+            &:focus-within{
+                text-decoration: underline;
+            }
+        }
+
+        &_top{
+            h2{
+                @include header;
+                margin: 0;
+            }
+            p{
+                margin-block: $size-400;
+            }
+        }
+
+        &_bottom{
+            form{
+                @include flex-col($size-400);
+                div{
+                    @include flex-col($size-100);
+                    input{
+                        @include form-input;
+                    }
+                }
+
+                .action{
+                    button{
+                        @include button;
+                    }
+                    a{
+                        align-self: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include min-max-width(min, 50em){
+    .SignIn{
+        width: 60%;
+        margin-inline: $size-900;
+        .main{
+            max-width: 100%;
+            flex-direction: row;
+            margin-top: $size-700;
+            justify-content: space-between;
+            &_bottom{
+                width: 50%;
+            }
+        }
+
+        footer{
+            margin-top: $size-900 * 1.2;
+        }
+    }
+}
+
+// Light
+.light{
+    .main{
+        a{
+            color: $clr-light-accent;
+            &:hover{
+                color: $clr-light-grey-02;
+            }
+        }
+
+        &_bottom{
+            form{
+                div{
+                    label{
+                        color: $clr-light-grey-02;
+                    }
+                    input{
+                        background: $clr-light-grey-04;
+                        color: $clr-light-primary;
+                    }
+                }
+
+                .action{
+                    button{
+                        background: $clr-light-accent;
+                        color: $clr-light-white;
+                        &:is(:hover, :focus-within){
+                            background: $clr-light-accent-hover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Dark
+.dark{
+    .main{
+        a{
+            color: $clr-dark-accent;
+            &:hover{
+                color: $clr-dark-grey-02;
+            }
+        }
+
+        &_bottom{
+            form{
+                div{
+                    label{
+                        color: $clr-dark-grey-02;
+                    }
+                    input{
+                        background: $clr-dark-grey-04;
+                        color: $clr-dark-primary;
+                    }
+                }
+
+                .action{
+                    button{
+                        background: $clr-dark-accent;
+                        color: $clr-dark-white;
+                        &:is(:hover, :focus-within){
+                            background: $clr-dark-accent-hover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

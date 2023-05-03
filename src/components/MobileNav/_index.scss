@@ -8,8 +8,7 @@
     }
     &_bottom{
         @include flex-ac-jc;
-        padding-bottom: $size-400;
-        transition: all .5s cubic-bezier(1, 0, 1, 0);
+        padding-block: $size-400;
     }
     .show{
         height: auto;
@@ -19,6 +18,12 @@
     }
 }
 
+
+@include min-max-width(min, 50em){
+    .Mobile-nav{
+        display: none;
+    }
+}
 
 // Light
 .light{

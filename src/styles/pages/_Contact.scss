@@ -1,0 +1,132 @@
+.contact-div{
+    min-width: 100%;
+
+    .contact{
+        @include flex-col($size-400);
+        padding: $size-300;
+        &_top{
+            h2{
+                @include header;
+            }
+
+            form{
+                div{
+                    @include flex-col($size-100);
+                    margin-block: $size-300;
+                    input{
+                        @include form-input;
+                    }
+                    textarea{
+                        resize: none;
+                        height: $size-900;
+                        @include form-input;
+                    }
+                }
+                button{
+                    @include icon;
+                    padding: $size-300 $size-600;
+                    border-radius: $size-100;
+                    margin-block: $size-400;
+                }
+            }
+        }
+
+        &_bottom{
+            @include flex-col($size-600);
+            h3{
+                margin-bottom: $size-200;
+            }
+        }
+    }
+}
+
+@include min-max-width(min, 50em){
+    .contact-div{
+        min-width: 60%;
+        margin-inline: $size-900;
+        .contact{
+            gap: $size-900;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            &_top{
+                width: 70%;
+            }
+            &_bottom{
+                width: 30%;
+            }
+        }
+    }
+}
+
+// Light
+.light{
+    .contact-div{
+        .contact{
+            &_top{
+                form{
+                    div{
+                        label{
+                            color: $clr-light-grey-02;
+                        }
+                        input,
+                        textarea{
+                            background: $clr-light-grey-04;
+                            color: $clr-light-primary;
+                        }
+                    }
+
+                    button{
+                        background: $clr-light-accent;
+                        color: $clr-light-white;
+                        &:is(:hover, :focus-within){
+                            background: $clr-light-accent-hover;
+                        }
+                    }
+                }
+            }
+
+            &_bottom{
+                p{
+                    color: $clr-light-grey-01;
+                }
+            }
+        }
+    }
+}
+
+// Dark
+.dark{
+    .contact-div{
+        .contact{
+            &_top{
+                form{
+                    div{
+                        label{
+                            color: $clr-dark-grey-02;
+                        }
+                        input,
+                        textarea{
+                            background: $clr-dark-grey-04;
+                            color: $clr-dark-primary;
+                        }
+                    }
+
+                    button{
+                        background: $clr-dark-accent;
+                        color: $clr-dark-white;
+                        &:is(:hover, :focus-within){
+                            background: $clr-dark-accent-hover;
+                        }
+                    }
+                }
+            }
+
+            &_bottom{
+                p{
+                    color: $clr-light-grey-01;
+                }
+            }
+        }
+    }
+}

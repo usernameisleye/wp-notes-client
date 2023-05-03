@@ -1,3 +1,4 @@
+import Footer from "../components/Footer/Footer";
 import MobileNav from "../components/MobileNav/MobileNav";
 
 const Blog = () => {
@@ -56,6 +57,8 @@ const Blog = () => {
 
                 <button className="all-posts">All Posts</button>
             </main>
+
+            <Footer />
         </div>
      );
 }

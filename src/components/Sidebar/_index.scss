@@ -1,19 +1,29 @@
 .Sidebar{
+    @include flex-col(0);
     min-height: 100%;
     min-width: 60%;
     width: max-content;
-    @include flex-col($size-500);
     padding: $size-300;
 
-    .logo{
+    .logo,
+    .search{
         display: none;
+        margin-bottom: $size-400;
     }
 
-    .search{
-        display: none
+    .top{
+        .user{
+            img{
+                border-radius: 100%;
+                margin-left: auto;
+                width: $size-500;
+                cursor: pointer;
+            }
+        }
     }
 
     .close{
+        margin-bottom: $size-400;
         button{
             @include icon;
         }
@@ -33,11 +43,40 @@
 
 }
 
+@include min-max-width(min, 50em){
+    .Sidebar{
+        min-width: 15%;
+
+        .logo,
+        .search{
+            display: block;
+        }
+
+        .top{
+            @include flex-ac-sb;
+            align-items: flex-start;
+        }
+
+        .search{
+            width: 70%;
+            input{
+                width: 100%;
+            }
+        }
+
+        .close{
+            display: none;
+        }
+    }
+}
+
 // Light 
 .light{
     .Sidebar{
         background: $clr-light-grey-04;
-        nav{
+
+        nav,
+        .user{
             li{
                 a{
                     color: $clr-light-grey-02;
@@ -58,6 +97,7 @@
 .dark{
     .Sidebar{
         background: $clr-dark-grey-04;
+
         nav{
             li{
                 a{
