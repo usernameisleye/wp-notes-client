@@ -1,0 +1,187 @@
+// Values
+$background :("b6e3f4": #b6e3f4,"c0aede": #c0aede, "d1d4f9": #d1d4f9,"ffd5dc": #ffd5dc,"ffdfbf": #ffdfbf);
+
+$skin-color: ("77311d": #77311d, "ac6651": #ac6651, "f9c9b6": #f9c9b6);
+
+$hair-and-shirt-color: ("000000": #000000, "6bd9e9": #6bd9e9, "9287ff": #9287ff, "77311d": #77311d, "ac6651": #ac6651, "d2eff3": #d2eff3 ,"e0ddff": #e0ddff, "f4d150": #f4d150, "f9c9b6": #f9c9b6 ,"fc909f": #fc909f, "ffeba4": #ffeba4, "ffedef": #ffedef, "ffffff": #ffffff);
+
+@each $value, $color in $background {
+    .#{$value}{
+        height: 1rem;
+        width: 1rem;
+        background: $color;
+    }
+}
+
+@each $value, $color in $skin-color {
+    .skin-#{$value}{
+        height: 1rem;
+        width: 1rem;
+        background: $color;
+    }
+} 
+
+@each $value, $color in $hair-and-shirt-color {
+    .hair-#{$value}{
+        height: 1rem;
+        width: 1rem;
+        background: $color;
+        // Conditionals
+        @if $color == #000000{
+            border: 1px solid #ffffff;
+        }@else if $color == #ffffff{
+            border: 1px solid #000000;
+        }@else{
+            border: none;
+        }
+    }
+} 
+
+@each $value, $color in $hair-and-shirt-color {
+    .shirt-#{$value}{
+        height: 1rem;
+        width: 1rem;
+        background: $color;
+        // Conditionals
+        @if $color == #000000{
+            border: 1px solid #ffffff;
+        }@else if $color == #ffffff{
+            border: 1px solid #000000;
+        }@else{
+            border: none;
+        }
+    }
+} 
+
+.Avatar{
+    width: 100%;
+    padding: $size-300;
+    h2{
+        @include header;
+    }
+    img{
+        width: $size-700;
+        border-radius: 999px;
+    }
+
+    .options{
+        .username{
+            @include flex-col($size-100);
+            input{
+                @include form-input;
+            }
+        }
+
+        div{
+            h3{
+                @include base-header;
+                margin-block: $size-400;
+            }
+            .list{
+                @include flex-ac($size-300);
+                flex-wrap: wrap;
+                div{
+                    cursor: pointer;
+                    border-radius: 100%;
+                    border: 2px solid;
+                }
+            }
+        }
+
+        .avatar-bg, 
+        .skin-color,
+        .hair-color,
+        .shirt-color{
+            .list{
+                div{
+                    width: $size-600;
+                    height: $size-600;
+                }
+            }
+        }
+    }
+
+    button{
+        @include button;
+        padding: $size-300;
+        margin-block: $size-500;
+    }
+}
+
+@include min-max-width(min, 50em){
+    .Avatar{
+        width: 50%;
+        margin-inline: auto;
+        .options{
+            .username{
+                width: 50%;
+            }
+        }
+    }
+}
+
+// Light
+.light{
+    .Avatar{
+        .options{
+            .username{
+                label{
+                    color: $clr-light-grey-02;
+                }
+                input{
+                    background: $clr-light-grey-04;
+                    color: $clr-light-primary;
+                }
+            }
+
+            div{
+                .list{
+                    .active{
+                        border-color: $clr-light-accent;
+                    }
+                }
+            }
+        }
+
+        button{
+            background: $clr-light-accent;
+            color: $clr-light-white;
+            &:is(:hover, :focus-within){
+                background: $clr-light-accent-hover;
+            }
+        }
+    }
+}
+
+// Dark
+.dark{
+    .Avatar{
+        .options{
+            .username{
+                label{
+                    color: $clr-dark-grey-02;
+                }
+                input{
+                    background: $clr-dark-grey-04;
+                    color: $clr-dark-primary;
+                }
+            }
+
+            div{
+                .list{
+                    .active{
+                        border-color: $clr-dark-error;
+                    }
+                }
+            }
+        }
+
+        button{
+            background: $clr-dark-accent;
+            color: $clr-dark-white;
+            &:is(:hover, :focus-within){
+                background: $clr-dark-accent-hover;
+            }
+        }
+    }
+}

@@ -23,9 +23,7 @@
                     }
                 }
                 button{
-                    @include icon;
-                    padding: $size-300 $size-600;
-                    border-radius: $size-100;
+                    @include button;
                     margin-block: $size-400;
                 }
             }

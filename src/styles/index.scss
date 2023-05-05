@@ -32,10 +32,12 @@
 
 
 // Pages
-@import "./pages/Blog";
+@import "./pages/Blogs";
+@import "./pages/Details";
 @import "./pages/Contact";
 @import "./pages/SignIn";
 @import "./pages/SignUp";
+@import "./pages/CreateAvatar";
 
 // Utility classes
 .hide{

@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
+import Blog from "../components/Blog/Blog";
 import Footer from "../components/Footer/Footer";
 import MobileNav from "../components/MobileNav/MobileNav";
+import { useEffect, useState } from "react";
 
-const Blog = () => {
+const Blogs = () => {
+
     return ( 
         <div className="Blogs">
             <MobileNav />
@@ -30,11 +34,11 @@ const Blog = () => {
                     <div className="other_blogs">
                         <ul role="list">
                             <li>
-                                <div className="content">
-                                    <h4>Business Partners Work at Modern Office</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at arcu dui. </p>
-                                    <p>Feb 8, 2021</p>
-                                </div>
+                                {/* {blogs && blogs.map((blog, index) => { */}
+                                    <Link to="/details">
+                                        <Blog />
+                                    </Link>
+                                {/* })} */}
                             </li>
                             <li>
                                 <div className="content">
@@ -63,4 +67,4 @@ const Blog = () => {
      );
 }
  
-export default Blog;
+export default Blogs;

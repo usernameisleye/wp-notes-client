@@ -20,7 +20,7 @@ const SignUp = () => {
                         <div className="avatar">
                             <img src="./images/user-img.png" alt="Default user image" />
 
-                            <Link to="/signup/avatar">
+                            <Link to="/avatar">
                                 <button>Create avatar</button>
                             </Link>
                         </div>

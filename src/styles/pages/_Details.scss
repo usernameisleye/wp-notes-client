@@ -1,0 +1,198 @@
+.Details-div{
+    width: 100%;
+
+    .Details{
+        @include flex-col($size-500);
+        padding: $size-300;
+        .header{
+            h2{
+                @include header;
+                margin-bottom: $size-100;
+            }
+        }
+
+        .image{
+            width: 100%;
+            img{
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .body{
+            h3{
+                @include base-header;
+                margin-block: $size-400;
+            }
+            ul{
+                list-style: decimal;
+                padding-left: $size-300;
+            }
+        }
+
+        .comments-section{
+            h3{
+                @include base-header;
+                font-weight: 500;
+            }
+
+            .comments{
+                margin-block: $size-700;
+                .comment{
+                    @include flex-ac($size-300);
+                    align-items: flex-start;
+                    &_pfp{
+                        img{
+                            width: $size-900;
+                        }
+                    }
+                    &_details{
+                        @include flex-col($size-100);
+                        padding-bottom: $size-200;
+                        border-bottom: 1px solid;
+
+                        button{
+                            @include icon;
+                            width: fit-content;
+                            align-self: flex-end;
+                        }
+                    }
+                }
+            }
+        }
+
+        .post-comment{
+            @include flex-col($size-100);
+            .post{
+                @extend .post-comment;
+                textarea{
+                    @include form-input;
+                    height: $size-900;
+                    resize: none
+                }
+            }
+
+            button{
+                @include button;
+                width: fit-content;
+                margin-block: $size-200;
+                padding: $size-300;
+            }
+        }
+    }
+}
+
+@include min-max-width(min, 50em){
+    .Details-div{
+        width: 50%;
+        margin-inline: auto;
+    }
+}
+
+// Light
+.light{
+    .Details-div{
+        .Details{
+            .header{
+                &_bottom{
+                    span{
+                        color: $clr-light-grey-02;
+                    }
+                }
+            }
+    
+            .comments{
+                .comment{
+                    &_details{
+                        border-color: $clr-light-grey-03;
+                        p{
+                            color: $clr-light-grey-02;
+                        }
+                        
+                        button{
+                            color: $clr-light-grey-02;
+                            &:is(:hover, :focus-within){
+                                color: $clr-light-primary;
+                            }
+                        }
+                    }
+                }
+            }
+    
+            .post-comment{
+                .post{
+                    label{
+                        color: $clr-light-grey-02;
+                    }
+    
+                    textarea{
+                        background: $clr-light-grey-04;
+                        color: $clr-light-primary;
+                    }
+                }
+    
+                button{
+                    background: $clr-light-accent;
+                    color: $clr-light-white;
+                    &:is(:hover, :focus-within){
+                        background: $clr-light-accent-hover;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Dark
+.dark{
+    .Details-div{
+        .Details{
+            .header{
+                &_bottom{
+                    span{
+                        color: $clr-dark-grey-02;
+                    }
+                }
+            }
+    
+            .comments{
+                .comment{
+                    &_details{
+                        border-color: $clr-dark-grey-03;
+                        p{
+                            color: $clr-light-grey-02;
+                        }
+    
+                        button{
+                            color: $clr-dark-grey-02;
+                            &:is(:hover, :focus-within){
+                                color: $clr-dark-primary;
+                            }
+                        }
+                    }
+                }
+            }
+    
+            .post-comment{
+                .post{
+                    label{
+                        color: $clr-dark-grey-02;
+                    }
+    
+                    textarea{
+                        background: $clr-dark-grey-04;
+                        color: $clr-dark-primary;
+                    }
+                }
+    
+                button{
+                    background: $clr-dark-accent;
+                    color: $clr-dark-white;
+                    &:is(:hover, :focus-within){
+                        background: $clr-dark-accent-hover;
+                    }
+                }
+            }
+        }
+    }
+}

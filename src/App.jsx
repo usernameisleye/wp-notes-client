@@ -1,23 +1,32 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 // Components & Pages
 import Sidebar from "./components/Sidebar/Sidebar"
-import Blog from "./pages/Blog"
+import Blogs from "./pages/Blogs"
+import Details from "./pages/Details"
 import Contact from "./pages/Contact"
 import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
 import CreateAvatar from "./pages/CreateAvatar"
 
+import { useThemeContext } from "./hooks/useThemeContext"
+
 function App() {
+  const { theme } = useThemeContext();
 
   return (
     <Router>
-      <div className="App dark">
+      <div className={`App ${theme ? "light" : "dark"}`}>
         <Sidebar />
 
         <Routes>
           <Route 
             path="/"
-            element={<Blog />}
+            element={<Blogs />}
+          />
+
+          <Route 
+            path="/details"
+            element={<Details />}
           />
 
           <Route 
@@ -37,7 +46,7 @@ function App() {
           />
 
           <Route 
-            path="/signup/avatar"
+            path="/avatar"
             element={<CreateAvatar />}
           />
 

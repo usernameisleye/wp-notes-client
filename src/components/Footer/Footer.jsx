@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { BiSun, BiMoon } from "react-icons/bi"
+import { useThemeContext } from "../../hooks/useThemeContext";
 
 const Footer = () => {
+    // Theme Context
+    const { theme, toggleTheme } = useThemeContext();
+    
     const links = ["Instagram", "Twitter", "Facebook"];
 
     return ( 
@@ -25,6 +30,16 @@ const Footer = () => {
                         </li>
                     ))}
                 </ul>
+
+                {/* Theme Switch */}
+                <div className="Switch">
+                    <button
+                    onClick={toggleTheme}
+                    aria-label="toggle theme"
+                    >
+                        { theme ? <BiMoon /> : <BiSun /> }
+                    </button>
+                </div>
             </div>
         </footer>
      );
