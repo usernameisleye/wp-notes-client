@@ -1,16 +1,13 @@
 import { Link } from "react-router-dom";
 import Blog from "../components/Blog/Blog";
-import Footer from "../components/Footer/Footer";
-import MobileNav from "../components/MobileNav/MobileNav";
 import { useEffect, useState } from "react";
 
 const Blogs = () => {
 
     return ( 
         <div className="Blogs">
-            <MobileNav />
 
-            <main className="main">
+            <div className="main">
             <h2>Archive</h2>
                 <section className="pinned">
                     <h3>Pinned</h3>
@@ -60,9 +57,7 @@ const Blogs = () => {
                 </section>
 
                 <button className="all-posts">All Posts</button>
-            </main>
-
-            <Footer />
+            </div>
         </div>
      );
 }

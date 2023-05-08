@@ -1,11 +1,7 @@
-import Footer from "../components/Footer/Footer";
-import MobileNav from "../components/MobileNav/MobileNav";
-
 const Contact = () => {
     return ( 
         <div className="contact-div">
-            <MobileNav />
-            <main className="contact">
+            <div className="contact">
                 <div className="contact_top">
                     <h2>Contact</h2>
 
@@ -50,9 +46,7 @@ const Contact = () => {
                         <p>Lagos, Nigeria</p>
                     </div>
                 </div>
-            </main>
-
-            <Footer />
+            </div>
         </div>
      );
 }

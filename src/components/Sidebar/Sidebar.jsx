@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Search from "../Search/Search";
+import { useThemeContext } from "../../hooks/useThemeContext";
 
 const Sidebar = () => {
+    const { theme } = useThemeContext();
+
     // State values
     const [close, setClose] = useState(false);
     const [active, setActive] = useState(0);
@@ -30,14 +33,15 @@ const Sidebar = () => {
     // Close tab function
     const closeTab = () => {
         setClose(true);
+        document.querySelector(".Sidebar").classList.add("hide");
     };
 
     return ( 
-        <aside className={`Sidebar ${ close ? "hide" : "" }`}>
+        <aside className="Sidebar | hide">
             <div className="top">
                 <div className="logo">
                     <Link to="/">
-                        <img src="./images/logo.png" alt="WP notes logo" />
+                        <img src="./images/Logo.svg" alt="WP notes logo" />
                     </Link>
 
                 </div>
@@ -49,7 +53,7 @@ const Sidebar = () => {
 
             <div className="close" onClick={closeTab}>
                 <button>
-                    <img src="./images/close.png" alt="" className="Close icon"/>
+                    <img src={`./images/${theme ? "close" : "close-white"}.png`} alt="Close icon" />
                 </button>
             </div>
             

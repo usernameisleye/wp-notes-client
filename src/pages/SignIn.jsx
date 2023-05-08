@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer/Footer";
 
 const SignIn = () => {
     return ( 
@@ -41,8 +40,6 @@ const SignIn = () => {
                     </form>
                 </div>
             </section>
-
-            <Footer />
         </div>
      );
 }

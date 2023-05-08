@@ -1,5 +1,3 @@
-import Footer from "../components/Footer/Footer";
-
 const Details = () => {
     return ( 
         <div className="Details-div">
@@ -60,8 +58,6 @@ const Details = () => {
                     <button>Post Comment</button>
                 </div>
             </div>
-
-            <Footer />
         </div>    
      );
 }

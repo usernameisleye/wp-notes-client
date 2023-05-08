@@ -9,8 +9,11 @@ import SignUp from "./pages/SignUp"
 import CreateAvatar from "./pages/CreateAvatar"
 
 import { useThemeContext } from "./hooks/useThemeContext"
+import MobileNav from "./components/MobileNav/MobileNav"
+import Footer from "./components/Footer/Footer"
 
 function App() {
+  // Theme Context
   const { theme } = useThemeContext();
 
   return (
@@ -18,39 +21,45 @@ function App() {
       <div className={`App ${theme ? "light" : "dark"}`}>
         <Sidebar />
 
-        <Routes>
-          <Route 
-            path="/"
-            element={<Blogs />}
-          />
+        <main>
+          <MobileNav />
 
-          <Route 
-            path="/details"
-            element={<Details />}
-          />
+          <Routes>
+            <Route 
+              path="/"
+              element={<Blogs />}
+            />
 
-          <Route 
-            path="/contact"
-            element={<Contact />}
-          />
+            <Route 
+              path="/details"
+              element={<Details />}
+            />
 
-          {/* Auth */}  
-          <Route 
-            path="/signin"
-            element={<SignIn />}
-          />
+            <Route 
+              path="/contact"
+              element={<Contact />}
+            />
 
-          <Route 
-            path="/signup"
-            element={<SignUp />}
-          />
+            {/* Auth */}  
+            <Route 
+              path="/signin"
+              element={<SignIn />}
+            />
 
-          <Route 
-            path="/avatar"
-            element={<CreateAvatar />}
-          />
+            <Route 
+              path="/signup"
+              element={<SignUp />}
+            />
 
-        </Routes>
+            <Route 
+              path="/avatar"
+              element={<CreateAvatar />}
+            />
+
+          </Routes>
+
+          <Footer />
+        </main>
       </div>
     </Router>
   )

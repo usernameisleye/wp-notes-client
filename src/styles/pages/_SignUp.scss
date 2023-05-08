@@ -58,9 +58,6 @@
 
 @include min-max-width(min, 50em){
     .SignUp{
-        width: 60%;
-        margin-inline: $size-900;
-
         .main{
             max-width: 100%;
             flex-direction: row;

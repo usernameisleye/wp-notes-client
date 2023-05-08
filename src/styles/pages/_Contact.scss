@@ -1,6 +1,5 @@
 .contact-div{
-    min-width: 100%;
-
+    width: 100%;
     .contact{
         @include flex-col($size-400);
         padding: $size-300;
@@ -40,18 +39,15 @@
 
 @include min-max-width(min, 50em){
     .contact-div{
-        min-width: 60%;
-        margin-inline: $size-900;
         .contact{
-            gap: $size-900;
+            gap: $size-800;
             flex-direction: row;
             align-items: center;
-            justify-content: space-between;
             &_top{
-                width: 70%;
+                width: 65%;
             }
             &_bottom{
-                width: 30%;
+                width: 35%;
             }
         }
     }

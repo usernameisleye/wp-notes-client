@@ -23,6 +23,9 @@
         }
 
         .Switch{
+            @include flex-ac($size-100);
+            justify-content: flex-end;
+            flex-wrap: wrap;
             button{
                 @include icon;
                 padding: $size-100;

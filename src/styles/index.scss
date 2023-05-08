@@ -13,6 +13,9 @@
     min-height: 100vh;
     display: inline-flex;
     overflow-x: hidden;
+    main{
+        min-width: 100%;
+    }
     &.light{
         color: $clr-light-primary;
         background: $clr-light-white;
@@ -20,6 +23,16 @@
     &.dark{
         color: $clr-dark-primary;
         background: $clr-dark-white;
+    }
+}
+
+@include min-max-width(min, 50em){
+    .App{
+        main{
+            min-width: 60%;
+            max-width: 100%;
+            margin-inline: $size-900;
+        }
     }
 }
 

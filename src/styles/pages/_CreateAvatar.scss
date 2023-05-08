@@ -54,7 +54,7 @@ $hair-and-shirt-color: ("000000": #000000, "6bd9e9": #6bd9e9, "9287ff": #9287ff,
 } 
 
 .Avatar{
-    width: 100%;
+    // width: 100%;
     padding: $size-300;
     h2{
         @include header;
@@ -110,8 +110,8 @@ $hair-and-shirt-color: ("000000": #000000, "6bd9e9": #6bd9e9, "9287ff": #9287ff,
 
 @include min-max-width(min, 50em){
     .Avatar{
-        width: 50%;
-        margin-inline: auto;
+        // width: 50%;
+        // margin-inline: auto;
         .options{
             .username{
                 width: 50%;

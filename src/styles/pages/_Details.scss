@@ -12,7 +12,6 @@
         }
 
         .image{
-            width: 100%;
             img{
                 width: 100%;
                 object-fit: cover;
@@ -84,7 +83,7 @@
 
 @include min-max-width(min, 50em){
     .Details-div{
-        width: 50%;
+        width: fit-content;
         margin-inline: auto;
     }
 }

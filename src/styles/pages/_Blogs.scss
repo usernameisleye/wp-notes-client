@@ -1,7 +1,7 @@
 .Blogs{
     width: 100%;
 
-    main{
+    .main{
         padding: $size-300;
         a{
             text-decoration: none
@@ -44,8 +44,6 @@
 
 @include min-max-width(min, 50em){
     .Blogs{
-        width: 60%;
-        margin-inline: auto;
         .content{
             min-width: 100%;
         }
@@ -55,7 +53,7 @@
 // Light
 .light{
     .Blogs{
-        main{
+        .main{
             h2,
             h4,
             .all-posts{
@@ -92,7 +90,7 @@
 // Dark
 .dark{
     .Blogs{
-        main{
+        .main{
             h2,
             h4,
             .all-posts{

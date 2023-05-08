@@ -1,19 +1,27 @@
 import { useState } from "react";
 import Search from "../Search/Search";
+import { useThemeContext } from "../../hooks/useThemeContext";
 
 const MobileNav = () => {
+    // Theme Context
+    const { theme } = useThemeContext();
+
     const [search, setSearch] = useState(false);
+
+    const openTab = () => {
+        document.querySelector(".Sidebar").classList.remove("hide");
+    };
 
     const showSearch = () => {
         setSearch(!search);
-    }
+    };
 
     return ( 
         <div className={`Mobile-nav ${search ? "background" : "*"}`}>
             <nav className="Mobile-nav_top">
                 <div className="menu">
                     <button>
-                        <img src="./images/menu.png" alt="Menu icon" />
+                        <img src={`./images/${theme ? "menu" : "menu-white"}.png`} alt="Menu icon" onClick={openTab}/>
                     </button>
                 </div>
 
@@ -24,9 +32,9 @@ const MobileNav = () => {
                 <div className="search">
                     <button>
                         { search ? 
-                            <img src="./images/close.png" alt="Search icon" onClick={showSearch}/>
+                            <img src={`./images/${theme ? "close" : "close-white"}.png`} alt="Close icon" onClick={showSearch}/>
                             :
-                            <img src="./images/search.png" alt="Search icon" onClick={showSearch}/>
+                            <img src={`./images/${theme ? "search" : "search-white"}.png`} alt="Search icon" onClick={showSearch}/>
                          }
                     </button>
                 </div>

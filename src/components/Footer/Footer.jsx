@@ -33,7 +33,9 @@ const Footer = () => {
 
                 {/* Theme Switch */}
                 <div className="Switch">
+                    <label htmlFor="mode">{ theme ? "Light Mode" : "Dark Mode" }</label>
                     <button
+                    id="mode"
                     onClick={toggleTheme}
                     aria-label="toggle theme"
                     >

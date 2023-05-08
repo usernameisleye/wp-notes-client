@@ -45,20 +45,15 @@
 
 @include min-max-width(min, 50em){
     .SignIn{
-        width: 60%;
-        margin-inline: $size-900;
         .main{
             max-width: 100%;
             flex-direction: row;
             margin-top: $size-700;
+            margin-bottom: $size-900 * 1.2;
             justify-content: space-between;
             &_bottom{
                 width: 50%;
             }
-        }
-
-        footer{
-            margin-top: $size-900 * 1.2;
         }
     }
 }
