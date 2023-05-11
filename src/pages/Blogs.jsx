@@ -3,6 +3,25 @@ import Blog from "../components/Blog/Blog";
 import { useEffect, useState } from "react";
 
 const Blogs = () => {
+    const [blog, setBlogs] = useState(null);
+
+    const fetchBlogs = async () => {
+        try{
+            const res = await fetch("https://api.spaceflightnewsapi.net/v4/articles/");
+            const resData = await res.json();
+    
+            if(res.ok){
+                setBlogs(resData);
+            }
+        }
+        catch(err){
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        fetchBlogs();
+    }, [])
 
     return ( 
         <div className="Blogs">
@@ -31,11 +50,11 @@ const Blogs = () => {
                     <div className="other_blogs">
                         <ul role="list">
                             <li>
-                                {/* {blogs && blogs.map((blog, index) => { */}
-                                    <Link to="/details">
-                                        <Blog />
+                                {/* {blogs && blogs.map((blog, index) => {
+                                    <Link key={index} to="/details">
+                                        <Blog blog={blog} />
                                     </Link>
-                                {/* })} */}
+                                })}  */}
                             </li>
                             <li>
                                 <div className="content">

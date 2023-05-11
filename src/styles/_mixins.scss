@@ -42,6 +42,22 @@
     border-radius: $size-100;
 }
 
+@mixin light-button{
+    background: $clr-light-accent;
+    color: $clr-light-white;
+    &:is(:hover, :focus-within){
+        background: $clr-light-accent-hover;
+    }
+}
+
+@mixin dark-button{
+    background: $clr-dark-accent;
+    color: $clr-dark-white;
+    &:is(:hover, :focus-within){
+        background: $clr-dark-accent-hover;
+    }
+}
+
 @mixin flex-col($gap){
     display: flex;
     gap: $gap;

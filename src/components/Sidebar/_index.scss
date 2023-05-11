@@ -46,7 +46,6 @@
 @include min-max-width(min, 50em){
     .Sidebar{
         min-width: 15%;
-        width: 28%;
 
         .logo,
         .search{

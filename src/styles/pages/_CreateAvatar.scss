@@ -26,14 +26,6 @@ $hair-and-shirt-color: ("000000": #000000, "6bd9e9": #6bd9e9, "9287ff": #9287ff,
         height: 1rem;
         width: 1rem;
         background: $color;
-        // Conditionals
-        @if $color == #000000{
-            border: 1px solid #ffffff;
-        }@else if $color == #ffffff{
-            border: 1px solid #000000;
-        }@else{
-            border: none;
-        }
     }
 } 
 
@@ -42,79 +34,120 @@ $hair-and-shirt-color: ("000000": #000000, "6bd9e9": #6bd9e9, "9287ff": #9287ff,
         height: 1rem;
         width: 1rem;
         background: $color;
-        // Conditionals
-        @if $color == #000000{
-            border: 1px solid #ffffff;
-        }@else if $color == #ffffff{
-            border: 1px solid #000000;
-        }@else{
-            border: none;
-        }
     }
 } 
 
-.Avatar{
-    // width: 100%;
-    padding: $size-300;
-    h2{
-        @include header;
-    }
-    img{
-        width: $size-700;
-        border-radius: 999px;
-    }
-
-    .options{
-        .username{
-            @include flex-col($size-100);
-            input{
-                @include form-input;
-            }
-        }
-
-        div{
-            h3{
-                @include base-header;
-                margin-block: $size-400;
-            }
-            .list{
-                @include flex-ac($size-300);
-                flex-wrap: wrap;
-                div{
-                    cursor: pointer;
-                    border-radius: 100%;
-                    border: 2px solid;
-                }
-            }
-        }
-
-        .avatar-bg, 
-        .skin-color,
-        .hair-color,
-        .shirt-color{
-            .list{
-                div{
-                    width: $size-600;
-                    height: $size-600;
-                }
-            }
-        }
-    }
-
-    button{
-        @include button;
+.Avatar-div{
+    width: 100%;
+    .Avatar{
         padding: $size-300;
-        margin-block: $size-500;
+        h2{
+            @include header;
+        }
+        img{
+            width: $size-800;
+            border-radius: 999px;
+        }
+    
+        .options{
+            .username{
+                @include flex-col($size-100);
+                input{
+                    @include form-input;
+                }
+            }
+    
+            div{
+                h3{
+                    @include base-header;
+                    margin-block: $size-400;
+                }
+                .list{
+                    @include flex-ac($size-300);
+                    flex-wrap: wrap;
+                    div{
+                        cursor: pointer;
+                        border-radius: 100%;
+                        border: 2px solid;
+                    }
+                }
+            }
+    
+            .avatar-bg, 
+            .skin-color,
+            .hair-color,
+            .shirt-color{
+                .list{
+                    div{
+                        width: $size-600;
+                        height: $size-600;
+                    }
+                }
+            }
+        }
+    
+        button{
+            @include button;
+            padding: $size-300;
+            margin-block: $size-500;
+        }
+    }
+
+    .overlay{
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        gap: $size-500;
+
+        @include flex-ac-jc;
+        flex-direction: column;
+        background-color: $clr-dark-overlay;
+
+        transition: .25s;
+        .close{
+            @include icon;
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            img{
+                width: $size-400;
+            }
+        }
+
+        .result-avatar{
+            width: 70%;
+            border: 2px solid;
+            border-radius: 100%;
+        }
+
+        .save{
+            @include button;
+            padding: $size-200 $size-500;
+        }
+    }
+
+    .hide{
+        transform: scale(0%);
+    }
+    .show{
+        transform: scale(100%);
     }
 }
 
+
 @include min-max-width(min, 50em){
-    .Avatar{
-        // width: 50%;
-        // margin-inline: auto;
-        .options{
-            .username{
-                width: 50%;
+    .Avatar-div{
+        .Avatar{
+            .options{
+                .username{
+                    width: 50%;
+                }
+            }
+        }
+
+        .overlay{
+            .result-avatar{
+                width: 30%;
             }
         }
     }
@@ -143,12 +176,14 @@ $hair-and-shirt-color: ("000000": #000000, "6bd9e9": #6bd9e9, "9287ff": #9287ff,
             }
         }
 
-        button{
-            background: $clr-light-accent;
-            color: $clr-light-white;
-            &:is(:hover, :focus-within){
-                background: $clr-light-accent-hover;
-            }
+        .create{
+            @include light-button;
+        }
+    }
+
+    .overlay{
+        .save{
+            @include light-button;
         }
     }
 }
@@ -176,12 +211,14 @@ $hair-and-shirt-color: ("000000": #000000, "6bd9e9": #6bd9e9, "9287ff": #9287ff,
             }
         }
 
-        button{
-            background: $clr-dark-accent;
-            color: $clr-dark-white;
-            &:is(:hover, :focus-within){
-                background: $clr-dark-accent-hover;
-            }
+        .create{
+            @include dark-button;
+        }
+    }
+
+    .overlay{
+        .save{
+            @include dark-button;
         }
     }
 }

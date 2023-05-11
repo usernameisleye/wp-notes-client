@@ -46,10 +46,8 @@
 @include min-max-width(min, 50em){
     .SignIn{
         .main{
-            max-width: 100%;
             flex-direction: row;
-            margin-top: $size-700;
-            margin-bottom: $size-900 * 1.2;
+            margin-block: $size-700 $size-900 * 1.2;
             justify-content: space-between;
             &_bottom{
                 width: 50%;
@@ -82,11 +80,7 @@
 
                 .action{
                     button{
-                        background: $clr-light-accent;
-                        color: $clr-light-white;
-                        &:is(:hover, :focus-within){
-                            background: $clr-light-accent-hover;
-                        }
+                        @include light-button;
                     }
                 }
             }
@@ -118,11 +112,7 @@
 
                 .action{
                     button{
-                        background: $clr-dark-accent;
-                        color: $clr-dark-white;
-                        &:is(:hover, :focus-within){
-                            background: $clr-dark-accent-hover;
-                        }
+                        @include dark-button;
                     }
                 }
             }

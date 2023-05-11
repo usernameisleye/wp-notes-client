@@ -16,13 +16,43 @@
     main{
         min-width: 100%;
     }
+
+    // Light
     &.light{
         color: $clr-light-primary;
         background: $clr-light-white;
+
+        // Light error states
+        .error{
+            background: $clr-light-error-bg;
+            border-color: $clr-light-error;
+            color: $clr-light-error;
+        }
+        .error-field{
+            border: 2px solid $clr-light-error;
+        }
+        .error-msg{
+            color: $clr-light-error;
+        }
     }
+
+    // Dark
     &.dark{
         color: $clr-dark-primary;
         background: $clr-dark-white;
+
+        // Dark error styles
+        .error{
+            background: $clr-dark-error-bg;
+            border-color: $clr-dark-error;
+            color: $clr-dark-error;
+        }
+        .error-field{
+            border: 2px solid $clr-dark-error;
+        }
+        .error-msg{
+            color: $clr-dark-error;
+        }
     }
 }
 
@@ -55,6 +85,18 @@
 // Utility classes
 .hide{
     display: none;
+}
+
+.error{
+    border: 1px solid;
+    width: fit-content;
+    margin-top: $size-400;
+    border-radius: $size-100;
+    padding: $size-300 $size-500;
+}
+
+.error-msg{
+    font-size: .9rem;
 }
 
 @include min-max-width(min, 50em){

@@ -6,7 +6,7 @@ const Options = () => {
 
     const eyeValues = [
         {
-            eye: "normal",
+            eye: "eyes",
             src: "normal-eye"
         }, 
         {
@@ -18,6 +18,24 @@ const Options = () => {
             src: "smiling-eye"
         }
     ];
+    const eyeBrowsValues = [
+        {
+            brows: "down",
+            src: "brows-down"
+        },
+        {
+            brows: "up",
+            src: "brows-up"
+        },
+        {
+            brows: "eyelashesDown",
+            src: "brows-lashes-down"
+        },
+        {
+            brows: "eyelashesUp",
+            src: "brows-lashes-up"
+        },
+    ];
     const noseValues = [
         {
             nose: "curve",
@@ -28,7 +46,7 @@ const Options = () => {
             src: "pointed-nose"
         },
         {
-            nose: "round",
+            nose: "tound",
             src: "round-nose"
         }
     ];
@@ -124,7 +142,7 @@ const Options = () => {
             src: "open-shirt"
         }
     ];
-    return { backgroundValues, skinValues, hairColorAndShirtColorValues, eyeValues, earValues, noseValues, mouthValues, hairValues, shirtValues };
+    return { backgroundValues, skinValues, hairColorAndShirtColorValues, eyeValues, eyeBrowsValues, earValues, noseValues, mouthValues, hairValues, shirtValues };
 }
  
 export default Options;

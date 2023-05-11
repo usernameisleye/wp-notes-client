@@ -6,13 +6,13 @@ $clr-light-accent-hover: rgb(218, 87, 69);
 
 $clr-light-primary: rgb(48, 48, 48);
 $clr-light-white: rgb(255, 255, 255);
-
 $clr-light-grey-01: rgb(80, 80, 80);
 $clr-light-grey-02: rgb(137, 137, 137);
 $clr-light-grey-03: rgb(231,231,233);
 $clr-light-grey-04: rgb(246, 246, 246);
 
 $clr-light-error: rgb(216, 39, 0);
+$clr-light-error-bg: rgb(216, 39, 0, .2);
 
 // Dark Mode
 $clr-dark-accent: rgb(239, 134, 120);
@@ -21,12 +21,15 @@ $clr-dark-accent-hover: rgb(236, 113, 96);
 $clr-dark-primary: rgb(224, 224, 224);
 $clr-dark-white: rgb(00, 00, 00);
 
+$clr-dark-overlay: rgb(00, 00, 00, .96);
+
 $clr-dark-grey-01: rgb(137, 137, 137);
 $clr-dark-grey-02: rgb(85, 85, 85);
 $clr-dark-grey-03: rgb(32,32,32);
 $clr-dark-grey-04: rgb(16, 16, 16);
 
 $clr-dark-error: rgb(224, 82, 51);
+$clr-dark-error-bg: rgb(224, 82, 51, .2);
 
 // Font family
 $ff-accent: 'Inter', sans-serif;

@@ -71,11 +71,7 @@
                     }
 
                     button{
-                        background: $clr-light-accent;
-                        color: $clr-light-white;
-                        &:is(:hover, :focus-within){
-                            background: $clr-light-accent-hover;
-                        }
+                        @include light-button;
                     }
                 }
             }
@@ -107,11 +103,7 @@
                     }
 
                     button{
-                        background: $clr-dark-accent;
-                        color: $clr-dark-white;
-                        &:is(:hover, :focus-within){
-                            background: $clr-dark-accent-hover;
-                        }
+                        @include dark-button;
                     }
                 }
             }
