@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import Search from "../Search/Search";
 import { useThemeContext } from "../../hooks/useThemeContext";

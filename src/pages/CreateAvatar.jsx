@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Options from "../utils/Options";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const CreateAvatar = () => {
     // State values
@@ -69,8 +70,10 @@ const CreateAvatar = () => {
             const res = await fetch("http://localhost:2004/api/user/avatar", options);
             const resData = await res.json();
 
-            console.log(resData);
-            setSrc(resData);
+            if(res.ok){
+                // console.log(resData);
+                setSrc(resData);
+            }
         }
         catch(error){
             console.log(error);

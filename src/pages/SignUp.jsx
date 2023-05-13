@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const SignUp = () => {
     return ( 

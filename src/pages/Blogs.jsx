@@ -3,25 +3,26 @@ import Blog from "../components/Blog/Blog";
 import { useEffect, useState } from "react";
 
 const Blogs = () => {
-    const [blog, setBlogs] = useState(null);
+    const [blogs, setBlogs] = useState([]);
 
-    const fetchBlogs = async () => {
-        try{
-            const res = await fetch("https://api.spaceflightnewsapi.net/v4/articles/");
-            const resData = await res.json();
-    
-            if(res.ok){
-                setBlogs(resData);
-            }
-        }
-        catch(err){
-            console.log(err);
-        }
-    };
 
     useEffect(() => {
+        const fetchBlogs = async () => {
+            try{
+                const res = await fetch("https://api.spaceflightnewsapi.net/v4/articles/");
+                const resData = await res.json();
+                
+                if(res.ok){
+                    setBlogs(resData);
+                }
+            }
+            catch(err){
+                console.log(err);
+            }
+        };
+
         fetchBlogs();
-    }, [])
+    }, []);
 
     return ( 
         <div className="Blogs">
