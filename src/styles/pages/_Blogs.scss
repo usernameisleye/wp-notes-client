@@ -15,12 +15,27 @@
         h4{
             @include base-header;
         }
+
+        .empty{
+            @include base-header;
+            margin-block: $size-400;
+            text-align: center;
+        }
+
         .content{
             @include flex-col($size-100);
             padding: $size-400 $size-200;
             border-radius: $size-100;
-            width: fit-content;
+            width: auto;
             cursor: pointer;
+
+            .header,
+            .body{
+                width: 100%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
         }
 
         .other{

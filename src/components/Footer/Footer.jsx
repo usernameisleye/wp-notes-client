@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { BiSun, BiMoon } from "react-icons/bi"
-import { useThemeContext } from "../../hooks/useThemeContext";
+import { useThemeContext } from "../../context/ThemeContext";
 
 const Footer = () => {
     // Theme Context
@@ -12,7 +12,7 @@ const Footer = () => {
         <footer className="Footer">
             <div className="Footer_top">
                 <div className="logo">
-                    <img src="./images/Logo.svg" alt="WP notes logo" />
+                    <img src="/images/Logo.svg" alt="WP notes logo" />
                 </div>
 
                 <div className="theme-by">

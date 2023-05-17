@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Options from "../utils/Options";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useGlobalContext } from "../context/GlobalContext";
 
 const CreateAvatar = () => {
+    const { setAvatarSrc } = useGlobalContext();
+    const navigate = useNavigate();
+
     // State values
     const [username, setUsername] = useState("");
 
@@ -71,20 +76,24 @@ const CreateAvatar = () => {
             const resData = await res.json();
 
             if(res.ok){
-                // console.log(resData);
                 setSrc(resData);
+                setAvatarSrc(resData);
             }
         }
         catch(error){
             console.log(error);
             setError(error.message);
+            setShow(false);
         };
     };
 
     // Save Avatar
     const saveAvatar = (e) => {
         e.target.textContent = "Saved⚡";
-        window.location = "/signup"
+        //Navigate to signup
+        setTimeout(() => {
+            navigate("/signup");
+        }, 900)
     }
 
     return (

@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 export const ThemeContext = createContext();
@@ -18,4 +18,14 @@ export const ThemeContextProvider = ({ children }) => {
             { children }
         </ThemeContext.Provider>
     );
+}
+
+export const useThemeContext = () => {
+    const theme = useContext(ThemeContext);
+    
+    if(!theme){
+        throw Error("useThemeContext must be used inside a ThemeContextProvider");
+    }
+
+    return theme;
 }

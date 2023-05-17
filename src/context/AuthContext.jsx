@@ -1,32 +1,38 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 export const AuthContext = createContext();
 
 export const AuthReducer = (state, action) => {
     switch(action.type){
         case "LOGIN":
-            return { ...action.payload };
+            return { user: action.payload };
         case "LOGOUT":
-            return null;
-        case "SET_AVATAR":
-            return { ...action.payload };
+            return { user: null };
         default:
             return state;
     }
 }
 
+// Provider
 export const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AuthReducer, {
-        data: null
+        user: null
     });
 
-    // States
-    // const [user, setUser] = useState(null);
-    // const [avatarSrc, setAvatarSrc] = useState(null);
-
     return(
-        <AuthContext.Provider value={{ ...state, dispatch }}>
+        <AuthContext.Provider value={{ state, dispatch }}>
             { children }
         </AuthContext.Provider>
     )
+}
+
+// Hook
+export const useAuthContext = () => {
+    const user = useContext(AuthContext);
+
+    if(!user){
+        throw Error("useAuthContext must be inside a AuthContextProvider")
+    }
+
+    return user;
 }

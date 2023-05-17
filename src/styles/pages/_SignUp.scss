@@ -23,15 +23,37 @@
         &_bottom{
             form{
                 @include flex-col($size-400);
+
                 .avatar{
                     @include flex-ac($size-400);
-                    img{
-                        width: $size-700;
+                    &_main{
+                        position: relative;
+                        width: max-content;
+                        
+                        .avatar-img{
+                            border-radius: 100%;
+                            width: $size-700;
+                        }
+
+                        .clear-avatar{
+                            position: absolute;
+                            top: -5%;
+                            left: 80%;
+                            cursor: pointer;
+                            width: $size-200;
+                            padding: $size-100;
+                            border-radius: 100%;
+                            &:hover{
+                                filter: brightness(110%);
+                            }
+                        }
                     }
+
                     button{
                         @include button;
                         padding: $size-200 $size-300;
                     }
+                    
                 }
 
                 div:not(:first-child){
@@ -64,6 +86,11 @@
 
             &_bottom{
                 width: 50%;
+                form{
+                    .clear-avatar{
+                        left: 10%;
+                    }
+                }
             }
         }
     }
@@ -88,6 +115,9 @@
                     input{
                         background: $clr-light-grey-04;
                         color: $clr-light-primary;
+                    }
+                    .clear-avatar{
+                        background: $clr-light-error; 
                     }
                 }
 
@@ -121,6 +151,9 @@
                     input{
                         background: $clr-dark-grey-04;
                         color: $clr-dark-primary;
+                    }
+                    .clear-avatar{
+                        background: $clr-dark-error; 
                     }
                 }
 

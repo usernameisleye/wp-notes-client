@@ -4,10 +4,26 @@
     .Details{
         @include flex-col($size-500);
         padding: $size-300;
+        &_top{
+            @include flex-ac-sb;
+            margin-top: $size-400;
+            .back{
+                cursor: pointer;
+                @include flex-ac($size-100);
+                text-decoration: underline;
+                font-size: $size-300 * 1.2;
+            }
+
+            .pin{
+                font-size: $size-400;
+                cursor: pointer;
+            }
+        }
+
         .header{
             h2{
                 @include header;
-                margin-bottom: $size-100;
+                margin-block: $size-100;
             }
         }
 
@@ -92,6 +108,19 @@
 .light{
     .Details-div{
         .Details{
+            &_top{
+                .back{
+                    color: $clr-light-grey-02;
+                    &:is(:hover, :focus){
+                        color: $clr-light-accent;
+                    }
+                }
+
+                .pin > *{
+                    color: $clr-light-accent;
+                }
+            }
+
             .header{
                 &_bottom{
                     span{
@@ -142,6 +171,19 @@
 .dark{
     .Details-div{
         .Details{
+            &_top{
+                .back{
+                    color: $clr-dark-grey-02;
+                    &:is(:hover, :focus){
+                        color: $clr-dark-accent;
+                    }
+                }
+                
+                .pin > *{
+                    color: $clr-dark-accent;
+                }
+            }
+
             .header{
                 &_bottom{
                     span{

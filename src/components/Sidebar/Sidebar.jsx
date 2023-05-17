@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import Search from "../Search/Search";
-import { useThemeContext } from "../../hooks/useThemeContext";
+import { useThemeContext } from "../../context/ThemeContext";
 
 const Sidebar = () => {
     const { theme } = useThemeContext();
@@ -41,19 +41,19 @@ const Sidebar = () => {
             <div className="top">
                 <div className="logo">
                     <Link to="/">
-                        <img src="./images/Logo.svg" alt="WP notes logo" />
+                        <img src="/images/Logo.svg" alt="WP notes logo" />
                     </Link>
 
                 </div>
 
                 <div className="user">
-                    <img src="./images/user-img.png" alt="Default user image"/>
+                    <img src="/images/user-img.png" alt="Default user image"/>
                 </div>
             </div>
 
             <div className="close" onClick={closeTab}>
                 <button>
-                    <img src={`./images/${theme ? "close" : "close-white"}.png`} alt="Close icon" />
+                    <img src={`/images/${theme ? "close" : "close-white"}.png`} alt="Close icon" />
                 </button>
             </div>
             

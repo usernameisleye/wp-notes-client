@@ -1,9 +1,9 @@
-const Blog = () => {
+const Blog = ({post}) => {
     return ( 
         <div className="content">
-            <h4>Business Partners Work at Modern Office</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at arcu dui. </p>
-            <p>Feb 8, 2021</p>
+            <h4 className="header">{post.title}</h4>
+            <p className="body">{post.body} </p>
+            <p>{post.date}</p>
         </div>
      );
 }

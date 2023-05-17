@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useGlobalContext } from "../context/GlobalContext";
 
 const SignUp = () => {
+    const { avatarSrc, setAvatarSrc } = useGlobalContext();
+
     return ( 
         <div className="SignUp">
             <section className="main">
@@ -18,11 +20,18 @@ const SignUp = () => {
                 <div className="main_bottom">
                     <form action="">
                         <div className="avatar">
-                            <img src="./images/user-img.png" alt="Default user image" />
+                            <div className="avatar_main">
+                                {/* Avatar image */}
+                                <img src={avatarSrc ? avatarSrc : "./images/user-img.png"} className="avatar-img" alt="Default user image" />
+
+                                {/* Close img */}
+                                { avatarSrc ? <img src="/images/close-white.png" className="clear-avatar" alt="" onClick={() => setAvatarSrc(null)} /> : null }
+                            </div>
 
                             <Link to="/avatar">
                                 <button>Create avatar</button>
                             </Link>
+
                         </div>
 
                         <div className="email">

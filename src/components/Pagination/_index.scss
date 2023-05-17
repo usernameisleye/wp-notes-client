@@ -1,0 +1,68 @@
+.Pagination{
+    list-style: none;
+    @include flex-ac-jc;
+    gap: $size-100;
+    margin-block: $size-300;
+    justify-content: flex-end;
+    
+
+    &_body,
+    &_btn{
+        cursor: pointer;
+    }
+
+    &_body{
+        height: $size-400;
+        width: $size-400;
+        text-align: center;
+        border: 1px solid;
+        border-radius: 5px;
+        padding: $size-100;
+    }
+
+    .prev,
+    .next{
+        margin-inline: $size-100;
+    } 
+}
+
+// Hide Pagination
+.none{
+    display: none;
+}
+
+// Light
+.light{
+    .Pagination{
+        &_body{
+            border-color: $clr-light-grey-03;
+        }
+
+        &_num,
+        &_btn{
+            color: $clr-dark-grey-02;
+        }
+
+        &_active{
+            background: $clr-light-grey-03;
+        }
+    }
+}
+
+// Dark
+.dark{
+    .Pagination{
+        &_body{
+            border-color: $clr-dark-grey-03;
+        }
+
+        &_num,
+        &_btn{
+            color: $clr-dark-grey-02;
+        }
+
+        &_active{
+            background: $clr-dark-grey-03;
+        }
+    }
+}

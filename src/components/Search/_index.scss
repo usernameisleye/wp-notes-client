@@ -21,7 +21,7 @@
         input{
             color: $clr-light-primary;
             &::placeholder{
-                color: $clr-light-grey-02;
+                color: $clr-light-grey-01;
             }
         }
     }
@@ -33,9 +33,9 @@
         input{
             color: $clr-dark-primary;
             border: .5px solid $clr-dark-grey-02;
-            background: none;
+            background: $clr-dark-white;
             &::placeholder{
-                color: $clr-dark-grey-02;
+                color: $clr-dark-grey-01;
             }
         }
     }

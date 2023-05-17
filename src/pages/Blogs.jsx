@@ -1,28 +1,44 @@
 import { Link } from "react-router-dom";
-import Blog from "../components/Blog/Blog";
 import { useEffect, useState } from "react";
 
-const Blogs = () => {
-    const [blogs, setBlogs] = useState([]);
+import Blog from "../components/Blog/Blog";
+import Paginate from "../components/Pagination/Paginate";
 
+// Test data
+import { Posts } from "../utils/Test";
+import { useGlobalContext } from "../context/GlobalContext";
+
+const Blogs = () => {
+    const { search } = useGlobalContext();
+    // States
+    const [blogs, setBlogs] = useState([]);
+    const [show, setShow] = useState(false);
+    // Pagination
+    const [currentPost, setCurrentPost] = useState([]);
+    // Test
+    const posts = Posts;
+    const pinnedPosts = Posts.filter(post => post.pinned)
 
     useEffect(() => {
-        const fetchBlogs = async () => {
-            try{
-                const res = await fetch("https://api.spaceflightnewsapi.net/v4/articles/");
-                const resData = await res.json();
-                
-                if(res.ok){
-                    setBlogs(resData);
-                }
-            }
-            catch(err){
-                console.log(err);
-            }
-        };
+        // const fetchBlogs = async () => {
+        //     try{
+        //         const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+        //         const resData = await res.json();
+        //         // setBlogs(resData.results);
+        //     }
+        //     catch(err){
+        //         console.log(err);
+        //     }
+        // };
 
-        fetchBlogs();
+        // fetchBlogs();
     }, []);
+
+
+    const allPosts = (e) => {
+        e.target.remove();
+        setShow(true);
+    };
 
     return ( 
         <div className="Blogs">
@@ -33,14 +49,20 @@ const Blogs = () => {
                     <h3>Pinned</h3>
 
                     <div className="pinned_blogs">
+                        {/* Pinned post */}
                         <ul role="list">
-                            <li>
-                                <div className="content">
-                                    <h4>Light & Bright in Brooklyn</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at arcu dui. </p>
-                                    <p>Feb 8, 2021</p>
-                                </div>
-                            </li>
+                            {pinnedPosts.length > 0 ? (
+                                pinnedPosts.map(pinnedPost => (
+                                    <li key={pinnedPost.id}>
+                                        <Link to={`/details/${pinnedPost.id}`}>
+                                            <Blog post={pinnedPost} />
+                                        </Link>
+                                    </li>    
+                                ))) :
+                                (
+                                    <p className="empty">No Pinned Post</p>
+                                )
+                            }
                         </ul>
                     </div>
                 </section>
@@ -49,35 +71,35 @@ const Blogs = () => {
                     <h3>Other</h3>
 
                     <div className="other_blogs">
+                        {/* Posts */}
                         <ul role="list">
-                            <li>
-                                {/* {blogs && blogs.map((blog, index) => {
-                                    <Link key={index} to="/details">
-                                        <Blog blog={blog} />
+                            {currentPost.filter(item => {
+                                const value = item.title.toLowerCase().includes(search.toLowerCase());
+
+                                return value;
+                            }
+                            )
+                            .map(post => (
+                                <li key={post.id}>
+                                    <Link to={`/details/${post.id}`}>
+                                        <Blog post={post} />
                                     </Link>
-                                })}  */}
-                            </li>
-                            <li>
-                                <div className="content">
-                                    <h4>Light & Bright in Brooklyn</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at arcu dui. </p>
-                                    <p>Feb 8, 2021</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="content">
-                                    <h4>Light & Bright in Brooklyn</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at arcu dui. </p>
-                                    <p>Feb 8, 2021</p>
-                                </div>
-                            </li>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
                 </section>
 
-                <button className="all-posts">All Posts</button>
+                <button className="all-posts" onClick={allPosts}>All Posts</button>
             </div>
+
+            {/* Pagination */}
+            <Paginate 
+              show={show}
+              posts={posts}
+              setCurrentPost={setCurrentPost}
+            />
         </div>
      );
 }

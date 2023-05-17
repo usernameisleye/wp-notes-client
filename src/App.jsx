@@ -1,6 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-// Components & Pages
+// Components 
 import Sidebar from "./components/Sidebar/Sidebar"
+import MobileNav from "./components/MobileNav/MobileNav"
+import Footer from "./components/Footer/Footer"
+
+// Pages
 import Blogs from "./pages/Blogs"
 import Details from "./pages/Details"
 import Contact from "./pages/Contact"
@@ -8,12 +12,10 @@ import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
 import CreateAvatar from "./pages/CreateAvatar"
 
-import { useThemeContext } from "./hooks/useThemeContext"
-import MobileNav from "./components/MobileNav/MobileNav"
-import Footer from "./components/Footer/Footer"
+// Context
+import { useThemeContext } from "./context/ThemeContext"
 
 function App() {
-  // Theme Context
   const { theme } = useThemeContext();
 
   return (
@@ -31,7 +33,7 @@ function App() {
             />
 
             <Route 
-              path="/details"
+              path="/details/:id"
               element={<Details />}
             />
 
