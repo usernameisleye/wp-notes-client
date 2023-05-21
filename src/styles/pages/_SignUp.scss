@@ -1,5 +1,8 @@
 .SignUp{
     width: 100%;
+    .error{
+        margin: $size-300 auto;
+    }
     .main{
         @include flex-col($size-600);
         padding: $size-300;
@@ -54,6 +57,13 @@
                         padding: $size-200 $size-300;
                     }
                     
+                }
+
+                .password{
+                    position: relative;
+                    &_alter{
+                        @include alter-password;
+                    }
                 }
 
                 div:not(:first-child){

@@ -1,0 +1,91 @@
+.Logout{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+
+    padding: $size-400;
+    border-radius: $size-100;
+    width: 80%;
+
+    @include flex-ac-jc;
+    flex-direction: column;
+
+    transition: .25s;
+    h2{
+        font-size: $size-500;
+    }
+
+    p{
+        margin-block: $size-400;
+    }
+
+    .buttons{
+        @include flex-ac($size-200);
+        flex-direction: column;
+        width: 100%;
+
+        @mixin logout{
+            width: 100%;
+            @include button;
+            padding: $size-200 $size-400;
+            &:hover{
+                filter: brightness(120%);
+            }
+        }
+
+        .yes{
+            @include logout;
+        }
+
+        .no{
+            @include logout;
+            border: 1px solid;
+        }
+    }
+
+}
+// Show & Hide
+.see{
+    display: block;
+}
+.un-see{
+    display: none;
+}
+
+
+@include min-max-width(min, 50em){
+    .Logout{
+        width: 45%;
+        .buttons{
+            flex-direction: row;
+        }
+    }
+}
+
+// Light
+.light{
+    .Logout{
+     background-color: $clr-light-grey-03;
+        .yes{
+            background: $clr-light-error;
+            color: $clr-light-white;
+        }
+    }
+}
+
+// Dark
+.dark{
+    .Logout{
+    background-color: $clr-dark-grey-03;
+        .yes{
+            background: $clr-dark-error;
+            color: $clr-dark-primary;
+        }
+        .no{
+            background: none;
+            color: $clr-dark-primary;
+        }
+    }
+}

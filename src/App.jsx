@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from "react-router-dom"
 // Components 
 import Sidebar from "./components/Sidebar/Sidebar"
 import MobileNav from "./components/MobileNav/MobileNav"
@@ -14,6 +14,21 @@ import CreateAvatar from "./pages/CreateAvatar"
 
 // Context
 import { useThemeContext } from "./context/ThemeContext"
+import { useAuthContext } from "./context/AuthContext"
+
+const PrivateRoutes = () => {
+  const { user } = useAuthContext();
+  return(
+    user ? <Outlet /> : <Navigate to="/signin"/>
+  );
+};
+
+const AuthRoutes = () => {
+  const { user } = useAuthContext();
+  return(
+    !user ? <Outlet /> : <Navigate to="/"/>
+  );
+};
 
 function App() {
   const { theme } = useThemeContext();
@@ -27,37 +42,41 @@ function App() {
           <MobileNav />
 
           <Routes>
-            <Route 
-              path="/"
-              element={<Blogs />}
-            />
+            {/* Private */}
+            <Route element={<PrivateRoutes />}>
+              <Route 
+                path="/"
+                element={<Blogs />}
+              />
 
-            <Route 
-              path="/details/:id"
-              element={<Details />}
-            />
+              <Route 
+                path="/details/:id"
+                element={<Details />}
+              />
 
-            <Route 
-              path="/contact"
-              element={<Contact />}
-            />
+              <Route 
+                path="/contact"
+                element={<Contact />}
+              />
+            </Route>
 
             {/* Auth */}  
-            <Route 
-              path="/signin"
-              element={<SignIn />}
-            />
+            <Route element={<AuthRoutes />}>
+              <Route 
+                path="/signin"
+                element={<SignIn />}
+              />
 
-            <Route 
-              path="/signup"
-              element={<SignUp />}
-            />
+              <Route 
+                path="/signup"
+                element={<SignUp />}
+              />
 
-            <Route 
-              path="/avatar"
-              element={<CreateAvatar />}
-            />
-
+              <Route 
+                path="/avatar"
+                element={<CreateAvatar />}
+              />
+            </Route>
           </Routes>
 
           <Footer />

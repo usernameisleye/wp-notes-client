@@ -1,14 +1,18 @@
-import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import Search from "../Search/Search";
+import { Link, useLocation } from "react-router-dom";
+
 import { useThemeContext } from "../../context/ThemeContext";
+import { useAuthContext } from "../../context/AuthContext";
+import Logout from "../Logout/Logout";
 
 const Sidebar = () => {
     const { theme } = useThemeContext();
+    const { user } = useAuthContext();
 
-    // State values
-    const [close, setClose] = useState(false);
-    const [active, setActive] = useState(0);
+    // Get route location
+    const location = useLocation();
+    const [open, setOpen] = useState(false);
 
     const links = [
         {
@@ -19,20 +23,10 @@ const Sidebar = () => {
             title: "Contact",
             to: "/contact"
         },
-        {
-            title: "Sign In",
-            to: "/signin"
-        }
     ];
-
-    // Handle onclick active
-    const handleActive = (index) => {
-        setActive(index);
-    }
 
     // Close tab function
     const closeTab = () => {
-        setClose(true);
         document.querySelector(".Sidebar").classList.add("hide");
     };
 
@@ -47,7 +41,7 @@ const Sidebar = () => {
                 </div>
 
                 <div className="user">
-                    <img src="/images/user-img.png" alt="Default user image"/>
+                    <img src={user ? user.avatar : "/images/user-img.png"} alt="Default user image"/>
                 </div>
             </div>
 
@@ -60,20 +54,41 @@ const Sidebar = () => {
             <Search />
 
             <nav>
-                <ul className="links" role="list">
-                    {links.map((link, index) => (
-                        <li 
-                          key={index} 
-                          onClick={() => handleActive(index)}
-                        >
+                {user ? (
+                    <ul className="links" role="list">
+                        {links.map((link, index) => (
+                            <li
+                                key={index}
+                            >
+                                <Link
+                                to={ link.to }
+                                className={location.pathname === link.to  ? "active" : null}
+                                >{ link.title }</Link>
+                            </li>
+
+                        ))}
+
+                        <button 
+                          className="logout"
+                          onClick={() => setOpen(true)}
+                        >Log out</button>
+                    </ul>
+                ) : (
+                    <ul className="links" role="list">
+                        <li>
                             <Link
-                             to={ link.to }
-                             className={index === active ? "active" : "*"}
-                             >{ link.title }</Link>
+                            to="/signin"
+                            className={location.pathname === "signin"  ? "active" : null}
+                            >Sign In</Link>
                         </li>
-                    ))}
-                </ul>
+                    </ul>
+                )}
             </nav>
+
+            <Logout 
+                open={open}
+                setOpen={setOpen}
+            />
         </aside>
      );
 }

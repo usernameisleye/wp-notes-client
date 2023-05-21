@@ -2,23 +2,23 @@ import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-const Paginate = ({ show, posts, setCurrentPost }) => {
-    const itemsPerPage = 3;
-    const [firstPost, setFirstPost] = useState(0);
+const Paginate = ({ show, blogs, setCurrentBlog }) => {
+    const blogPerPage = 3;
+    const [firstBlog, setFirstBlog] = useState(0);
     const [pageCount, setPageCount] = useState(0);
 
     useEffect(() => {
-        const lastPost = firstPost + itemsPerPage;
+        const lastBlog = firstBlog + blogPerPage;
 
-        setCurrentPost(posts.slice(firstPost, lastPost));
-        setPageCount(Math.ceil(posts.length / itemsPerPage))
-    }, [firstPost, itemsPerPage, posts]);
+        setCurrentBlog(blogs.slice(firstBlog, lastBlog));
+        setPageCount(Math.ceil(blogs.length / blogPerPage))
+    }, [firstBlog, blogPerPage, blogs]);
 
     // Invoke when there's a request to another page
     const handlePageClick = (event) => {
-        const newOffset = (event.selected * itemsPerPage) % posts.length;
+        const newOffset = (event.selected * blogPerPage) % blogs.length;
 
-        setFirstPost(newOffset);
+        setFirstBlog(newOffset);
     };
 
     return (

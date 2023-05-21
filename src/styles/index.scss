@@ -28,9 +28,6 @@
             border-color: $clr-light-error;
             color: $clr-light-error;
         }
-        .error-field{
-            border: 2px solid $clr-light-error;
-        }
         .error-msg{
             color: $clr-light-error;
         }
@@ -46,9 +43,6 @@
             background: $clr-dark-error-bg;
             border-color: $clr-dark-error;
             color: $clr-dark-error;
-        }
-        .error-field{
-            border: 2px solid $clr-dark-error;
         }
         .error-msg{
             color: $clr-dark-error;
@@ -73,6 +67,7 @@
 @import "../components/Search/index";
 @import "../components/Footer/index";
 @import "../components/Pagination/index";
+@import "../components/Logout/index";
 
 
 // Pages
@@ -98,6 +93,12 @@
 
 .error-msg{
     font-size: .9rem;
+}
+
+.empty{
+    @include base-header;
+    margin-block: $size-400;
+    text-align: center;
 }
 
 @include min-max-width(min, 50em){

@@ -1,5 +1,8 @@
 .SignIn{
     width: 100%;
+    .error{
+        margin: $size-300 auto;
+    }
     .main{
         @include flex-col($size-600);
         padding: $size-300;
@@ -37,6 +40,13 @@
                     a{
                         align-self: center;
                     }
+                }
+            }
+
+            .password{
+                position: relative;
+                &_alter{
+                    @include alter-password;
                 }
             }
         }

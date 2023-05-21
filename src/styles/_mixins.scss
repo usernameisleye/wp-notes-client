@@ -58,6 +58,14 @@
     }
 }
 
+@mixin alter-password{
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(50%);
+    cursor: pointer;
+}
+
 @mixin flex-col($gap){
     display: flex;
     gap: $gap;

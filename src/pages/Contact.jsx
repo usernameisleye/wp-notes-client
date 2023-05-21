@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Contact = () => {
     const [name, setName] = useState("");
@@ -17,8 +17,9 @@ const Contact = () => {
 
         const options = {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(body)
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+            credentials: "include"
         }
 
         try{
@@ -27,7 +28,6 @@ const Contact = () => {
             }
 
             const res = await fetch("http://localhost:2004/api/blogs/mail", options);
-
             const resData = await res.json();
 
             if(res.ok){
@@ -36,10 +36,15 @@ const Contact = () => {
                 setMessage("");
                 setLoading(false);
             }
+            if(!res.ok){
+                throw Error(resData.error);
+            }
         }
         catch(error){
-            setLoading(false);
             setError(error.message);
+        }
+        finally{
+            setLoading(false);
         }
     };
 
@@ -61,7 +66,6 @@ const Contact = () => {
                               type="text" 
                               value={name}
                               onChange={e => setName(e.target.value)}
-                              className={error && "error-field"}
                             />
                             {/* { error && <p className="error-msg">Required field</p> } */}
                         </div>
@@ -74,7 +78,6 @@ const Contact = () => {
                               type="text" 
                               value={email}
                               onChange={e => setEmail(e.target.value)}  
-                              className={error && "error-field"}
                             />
                             {/* { error && <p className="error-msg">Required field</p> } */}
                         </div>
@@ -85,8 +88,7 @@ const Contact = () => {
                             <textarea 
                               id="message"
                               value={message}
-                              onChange={e => setMessage(e.target.value)}   
-                              className={error && "error-field"}                     
+                              onChange={e => setMessage(e.target.value)}                        
                             ></textarea>
                             {/* { error && <p className="error-msg">Required field</p> } */}
                         </div>

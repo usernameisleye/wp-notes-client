@@ -1,9 +1,20 @@
 .Details-div{
     width: 100%;
 
+    .loading{
+        margin-block: 40vh;
+        margin-inline: auto;
+        width: $size-500;
+    }
+
+    .main-error{
+        margin-block: 40vh;
+        margin-inline: $size-400;
+    }
     .Details{
         @include flex-col($size-500);
         padding: $size-300;
+
         &_top{
             @include flex-ac-sb;
             margin-top: $size-400;
@@ -12,11 +23,6 @@
                 @include flex-ac($size-100);
                 text-decoration: underline;
                 font-size: $size-300 * 1.2;
-            }
-
-            .pin{
-                font-size: $size-400;
-                cursor: pointer;
             }
         }
 
@@ -43,6 +49,9 @@
                 list-style: decimal;
                 padding-left: $size-300;
             }
+            .full{
+                margin-top: $size-400
+            }
         }
 
         .comments-section{
@@ -52,25 +61,22 @@
             }
 
             .comments{
-                margin-block: $size-700;
+                margin-block: $size-600;
                 .comment{
                     @include flex-ac($size-300);
                     align-items: flex-start;
+                    margin-top: $size-400;
                     &_pfp{
                         img{
-                            width: $size-900;
+                            width: $size-700;
+                            border-radius: 100%;
                         }
                     }
                     &_details{
                         @include flex-col($size-100);
                         padding-bottom: $size-200;
                         border-bottom: 1px solid;
-
-                        button{
-                            @include icon;
-                            width: fit-content;
-                            align-self: flex-end;
-                        }
+                        width: 100%;
                     }
                 }
             }
@@ -115,16 +121,20 @@
                         color: $clr-light-accent;
                     }
                 }
-
-                .pin > *{
-                    color: $clr-light-accent;
-                }
             }
 
             .header{
                 &_bottom{
                     span{
                         color: $clr-light-grey-02;
+                    }
+                }
+            }
+
+            .body{
+                .full{
+                    a{
+                        color: $clr-light-accent;
                     }
                 }
             }
@@ -135,13 +145,6 @@
                         border-color: $clr-light-grey-03;
                         p{
                             color: $clr-light-grey-02;
-                        }
-                        
-                        button{
-                            color: $clr-light-grey-02;
-                            &:is(:hover, :focus-within){
-                                color: $clr-light-primary;
-                            }
                         }
                     }
                 }
@@ -178,16 +181,20 @@
                         color: $clr-dark-accent;
                     }
                 }
-                
-                .pin > *{
-                    color: $clr-dark-accent;
-                }
             }
 
             .header{
                 &_bottom{
                     span{
                         color: $clr-dark-grey-02;
+                    }
+                }
+            }
+
+            .body{
+                .full{
+                    a{
+                        color: $clr-dark-accent;
                     }
                 }
             }
@@ -198,13 +205,6 @@
                         border-color: $clr-dark-grey-03;
                         p{
                             color: $clr-light-grey-02;
-                        }
-    
-                        button{
-                            color: $clr-dark-grey-02;
-                            &:is(:hover, :focus-within){
-                                color: $clr-dark-primary;
-                            }
                         }
                     }
                 }

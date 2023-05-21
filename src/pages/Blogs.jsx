@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import Blog from "../components/Blog/Blog";
 import Paginate from "../components/Pagination/Paginate";
 
-// Test data
-import { Posts } from "../utils/Test";
 import { useGlobalContext } from "../context/GlobalContext";
 
 const Blogs = () => {
@@ -14,26 +12,40 @@ const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
     const [show, setShow] = useState(false);
     // Pagination
-    const [currentPost, setCurrentPost] = useState([]);
-    // Test
-    const posts = Posts;
-    const pinnedPosts = Posts.filter(post => post.pinned)
+    const [currentBlog, setCurrentBlog] = useState([]);
+    // Featured
+    const featuredBlogs = blogs.filter(blog => blog.featured);
+    // Utils
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
+    
+    let filtered = currentBlog.filter(blog => blog.title.toLowerCase().includes(search));
     useEffect(() => {
-        // const fetchBlogs = async () => {
-        //     try{
-        //         const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-        //         const resData = await res.json();
-        //         // setBlogs(resData.results);
-        //     }
-        //     catch(err){
-        //         console.log(err);
-        //     }
-        // };
+        setLoading(true);
+        const fetchBlogs = async () => {
+            try{
+                const res = await fetch("http://localhost:2004/api/blogs", {
+                    credentials: "include"
+                });
+                const resData = await res.json();
 
-        // fetchBlogs();
+                setBlogs(resData.results);
+                setLoading(false);
+                setError(null);
+
+                if(!res.ok){
+                    throw Error("Error fetching from server");
+                }
+            }
+            catch(error){
+                setError(error.message);
+                setLoading(false);
+            }
+        };
+
+        fetchBlogs();
     }, []);
-
 
     const allPosts = (e) => {
         e.target.remove();
@@ -46,21 +58,24 @@ const Blogs = () => {
             <div className="main">
             <h2>Archive</h2>
                 <section className="pinned">
-                    <h3>Pinned</h3>
+                    <h3>Featured</h3>
 
                     <div className="pinned_blogs">
-                        {/* Pinned post */}
+                        {/*Featured  post */}
                         <ul role="list">
-                            {pinnedPosts.length > 0 ? (
-                                pinnedPosts.map(pinnedPost => (
-                                    <li key={pinnedPost.id}>
-                                        <Link to={`/details/${pinnedPost.id}`}>
-                                            <Blog post={pinnedPost} />
+                            {featuredBlogs.length > 0 ? (
+                                // Mapping through featured post if present
+                                featuredBlogs.map(featured => (
+
+                                    <li key={featured.id}>
+                                        <Link to={`/details/${featured.id}`}>
+                                            <Blog post={featured} />
                                         </Link>
                                     </li>    
+                                    
                                 ))) :
                                 (
-                                    <p className="empty">No Pinned Post</p>
+                                    <p className="empty">No Featured Post</p>
                                 )
                             }
                         </ul>
@@ -73,18 +88,29 @@ const Blogs = () => {
                     <div className="other_blogs">
                         {/* Posts */}
                         <ul role="list">
-                            {currentPost.filter(item => {
-                                const value = item.title.toLowerCase().includes(search.toLowerCase());
+                            {/* Loading */}
+                            { loading && <img 
+                            src="/images/loading-gif.gif" 
+                            alt="" 
+                            className="loading"
+                            />}
 
-                                return value;
-                            }
-                            )
-                            .map(post => (
-                                <li key={post.id}>
-                                    <Link to={`/details/${post.id}`}>
-                                        <Blog post={post} />
-                                    </Link>
-                                </li>
+                            {error && <div className="error">{error}</div>}
+
+                            {/* Omoo😭 */}
+                            {blogs && (filtered.length > 0 || blogs ? (
+                                currentBlog.filter(item => {
+                                    return item.title.toLowerCase().includes(search.toLowerCase());
+                                })
+                                .map(post => (
+                                    <li key={post.id}>
+                                        <Link to={`/details/${post.id}`}>
+                                            <Blog post={post} />
+                                        </Link>
+                                    </li>
+                                ))
+                            ): (
+                                <p className="empty">No Matches Found</p>
                             ))}
                         </ul>
                     </div>
@@ -97,8 +123,8 @@ const Blogs = () => {
             {/* Pagination */}
             <Paginate 
               show={show}
-              posts={posts}
-              setCurrentPost={setCurrentPost}
+              blogs={blogs}
+              setCurrentBlog={setCurrentBlog}
             />
         </div>
      );

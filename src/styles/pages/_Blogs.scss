@@ -15,11 +15,9 @@
         h4{
             @include base-header;
         }
-
-        .empty{
-            @include base-header;
-            margin-block: $size-400;
-            text-align: center;
+        .loading{
+            margin-inline: auto;
+            width: $size-500;
         }
 
         .content{

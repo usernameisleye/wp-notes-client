@@ -38,9 +38,13 @@
                     padding-left: $size-100;
                 }
             }
+
+            button{
+                @include icon;
+                width: fit-content;
+            }
         }
     }
-
 }
 
 @include min-max-width(min, 50em){
@@ -75,10 +79,10 @@
     .Sidebar{
         background: $clr-light-grey-04;
 
-        nav,
-        .user{
+        nav{
             li{
-                a{
+                a,
+                button{
                     color: $clr-light-grey-02;
                     &:hover{
                         color: $clr-light-primary;
@@ -88,6 +92,13 @@
             .active{
                 border-left: 3px solid $clr-light-accent;
                 color: $clr-light-primary;
+            }
+
+            button{
+                color: $clr-light-grey-02;
+                &:hover{
+                    color: $clr-light-error;
+                }
             }
         }
     }
@@ -110,6 +121,13 @@
             .active{
                 border-left: 2px solid $clr-dark-accent;
                 color: $clr-dark-primary;
+            }
+
+            button{
+                color: $clr-dark-grey-02;
+                &:hover{
+                    color: $clr-dark-error;
+                }
             }
         }
     }
